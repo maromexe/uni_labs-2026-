@@ -3,7 +3,7 @@
 #include <time.h>
 
 int main() {
-    int n, m, count = 0;
+    int n, m, count = 0, sum = 0, max = -1;
 
     do{
         printf("Enter n, m: \n(n <= 300, m <= 200)\n");
@@ -47,11 +47,18 @@ int main() {
 
                 if (exists == 0) {
                     C[count] = B[i];
+
+                    sum += B[i];
+
+                    if (count == 0 || B[i] > max) {
+                        max = B[i];
+                    }
+
                     count++;
+                }
                 }
             }
         }
-    }
 
     if (!count) {
         printf("\nNo shared elements in A and B");
@@ -61,6 +68,8 @@ int main() {
         for (int i = 0; i < count; i++) {
             printf("%d ", C[i]);
         }
+        printf("\nSum: %d", sum);
+        printf("\nMax: %d", max);
     }
 
     free(A);

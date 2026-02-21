@@ -4,6 +4,7 @@
 
 int main() {
     int n, m, count = 0;
+    int sum = 0, max = -1;
 
     do{
         printf("Enter n, m: \n(n <= 300, m <= 200)\n");
@@ -62,6 +63,12 @@ int main() {
 
             if (alreadyInC == 0) {
                 C[count] = A[i];
+                sum += A[i];
+
+                if (count == 0 || A[i] > max) {
+                    max = A[i];
+                }
+
                 count++;
             }
         }
@@ -75,6 +82,8 @@ int main() {
         for (int i = 0; i < count; i++) {
             printf("%d ", C[i]);
         }
+        printf("\nSum: %d", sum);
+        printf("\nMax: %d", max);
     }
 
     free(A);
