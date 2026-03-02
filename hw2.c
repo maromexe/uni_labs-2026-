@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-/*завдання 1*/
+/*завдання 3*/
 
 int main() {
 
-    int n;
+    int n, k = 0;
 
     do {
         printf("Enter n: ");
@@ -25,7 +25,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            A[i][j] = rand() % 11;
+            A[i][j] = rand() % 21 - 10;
             printf("%d  ", A[i][j]);
         }
         printf("\n");
@@ -33,16 +33,14 @@ int main() {
 
 
     for (int i = 0; i < n; i++) {
-        int max = A[i][0];
         for (int j = 0; j < n; j++) {
-            if (A[i][j] > max) {
-                max = A[i][j];
+            if (A[i][j] < 0) {
+                k++;
             }
         }
-        printf("\n max of %d row - %d", i, max);
     }
 
-
+    printf("\nAmount of negative elements: %d", k);
 
     free(A);
 
