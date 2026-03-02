@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-/*завдання 3*/
+/*завдання 4*/
 
 int main() {
 
@@ -34,13 +34,13 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (A[i][j] < 0) {
+            if ((A[i][j] % 2 == 0) && (A[i][j] != 0)) {
                 k++;
             }
         }
     }
 
-    printf("\nAmount of negative elements: %d", k);
+    printf("\nAmount of even elements: %d", k);
 
     free(A);
 
