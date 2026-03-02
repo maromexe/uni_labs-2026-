@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-/*завдання 5*/
+/*завдання 6*/
 
 int main() {
 
@@ -11,7 +11,7 @@ int main() {
     do {
         printf("Enter n: ");
         scanf("%d", &n);
-    }while (n <= 0);
+    }while (n <= 1);
 
     int **A = (int**) malloc(n * sizeof(int*));
 
@@ -25,23 +25,28 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            A[i][j] = rand() % 21 - 10;
+            A[i][j] = rand() % 11;
             printf("%d  ", A[i][j]);
         }
         printf("\n");
     }
 
+    int temp;
+
     for (int i = 0; i < n; i++) {
-        int min = A[0][i];
-        for (int j = 0; j < n; j++) {
-            if (A[j][i] < min) {
-                min = A[j][i];
-            }
-        }
-        printf("\nMinimal element of %d row: %d", i, min);
+        temp = A[0][i];
+        A[0][i] = A[n-1][i];
+        A[n-1][i] = temp;
     }
 
+    printf("\n");
 
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d  ", A[i][j]);
+        }
+        printf("\n");
+    }
 
     free(A);
 
