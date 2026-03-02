@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-/*завдання 4*/
+/*завдання 5*/
 
 int main() {
 
-    int n, k = 0;
+    int n;
 
     do {
         printf("Enter n: ");
@@ -31,16 +31,17 @@ int main() {
         printf("\n");
     }
 
-
     for (int i = 0; i < n; i++) {
+        int min = A[0][i];
         for (int j = 0; j < n; j++) {
-            if ((A[i][j] % 2 == 0) && (A[i][j] != 0)) {
-                k++;
+            if (A[j][i] < min) {
+                min = A[j][i];
             }
         }
+        printf("\nMinimal element of %d row: %d", i, min);
     }
 
-    printf("\nAmount of even elements: %d", k);
+
 
     free(A);
 
