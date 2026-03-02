@@ -20,18 +20,19 @@ int main() {
         s += i * 4;
     }
 
-    for (int i = 1; i < (k + 1); i++) {
-        if ((k % (int)sn == 0)){
-            s += 3;
-        }
-        else {
-            s += 2;
+    if (k != 0) {
+        s += 3;
+        for (int i = 2; i <= k; i++) {
+            if ((i == sn + 1) || (i == (sn * 2) + 1)){
+                s += 3;
+            }
+            else {
+                s += 2;
+            }
         }
     }
 
-
     printf("%d", s);
-
 
     return 0;
 }
