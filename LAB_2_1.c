@@ -1,26 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void capital(FILE *f) {
-    char text[100];
-
-    while (fscanf(f, "%99s", text) != EOF) {
-        if (text[0] >= 'A' && text[0] <= 'Z') {
-            printf("%s\n", text);
-        }
+void capital(char *text) {
+  char *word = strtok(text, " \t\n");
+  while (word != NULL) {
+    if (word[0] >= 'A' && word[0] <= 'Z') {
+      printf("%s\n", word);
     }
+    word = strtok(NULL, " \t\n");
+  }
 }
 
 int main() {
-    FILE *f = fopen("../input.txt", "r");
+  int capacity = 10;
+  int length = 0;
+  char c;
 
-    if (!f) {
-        printf("Unable to open file\n");
-        return 1;
+  char *text = (char*)malloc(capacity * sizeof(char));
+
+  printf("Enter: ");
+
+  while ((c = getchar()) != '\n' && c != EOF) {
+    text[length] = c;
+    length++;
+
+    if (length == capacity) {
+      capacity *= 2;
+      text = (char*)realloc(text, capacity * sizeof(char));
     }
+  }
 
-    capital(f);
+  text[length] = '\0';
 
-    fclose(f);
+  printf("\nResult:\n");
+  capital(text);
 
-    return 0;
+  free(text);
+  return 0;
 }
