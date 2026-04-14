@@ -5,7 +5,7 @@ struct Student {
   char name[50];
   int group;
   int points[5];
-  int zero;
+  int n_a;
 };
 
 int main() {
@@ -36,20 +36,20 @@ int main() {
     printf("Номер групи: ");
     scanf("%d", &s[i].group);
 
-    s[i].zero = 0;
+    s[i].n_a = 0;
 
     printf("Атестація з 5 предметів: ");
     for(j = 0; j < 5; j++) {
       scanf("%d", &s[i].points[j]);
       if(s[i].points[j] == 0) {
-        s[i].zero++;
+        s[i].n_a++;
       }
     }
   }
 
   for(i = 0; i < n - 1; i++) {
     for(j = 0; j < n - i - 1; j++) {
-      if(s[j].zero > s[j+1].zero) {
+      if(s[j].n_a > s[j+1].n_a) {
         temp = s[j];
         s[j] = s[j+1];
         s[j+1] = temp;
@@ -60,7 +60,7 @@ int main() {
   printf("\nСПИСОК СТУДЕНТІВ (за кількістю неатестацій)\n");
   for(i = 0; i < n; i++) {
     printf("ПІБ: %s \tГрупа: %d \tНеатестовано: %d\n",
-           s[i].name, s[i].group, s[i].zero);
+           s[i].name, s[i].group, s[i].n_a);
   }
 
   free(s);
